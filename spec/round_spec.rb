@@ -27,12 +27,27 @@ RSpec.describe Round do
     end
   end
 
+  describe 'new_turn' do
+    it 'can take a new turn' do
+      new_turn = Turn.new('Juneau', @card1)
+
+      expect(new_turn).to be_a Turn
+      expect(new_turn.correct?).to be true
+    end
+  end
+
   describe '#take_turn' do
     it 'can take a turn' do
       @round.take_turn('Juneau')
 
-      expect(@round.turns).to eq([@card1])
+      expect(@round.turns).to be_an Array
       expect(@round.current_card).to eq(@card2)
+
+      @round.take_turn('Venus')
+      expect(@round.turns.count).to eq(2)
+      expect(@round.turns.last.feedback).to eq('Incorrect.')
+      expect(@round.number_correct).to eq(1)
+      expect(@round.current_card).to eq(@card3)
     end
   end
 
@@ -41,6 +56,33 @@ RSpec.describe Round do
       @round.take_turn('Juneau')
 
       expect(@round.number_correct).to eq(1)
+    end
+  end
+
+  describe '#number_correct_by_category' do
+    it 'can return the number correct of a certain category' do
+      @round.take_turn('Juneau')
+
+      expect(@round.number_correct_by_category(:Geography)).to eq(1)
+      expect(@round.number_correct_by_category(:STEM)).to eq(0)
+    end
+  end
+
+  describe '#percent_correct' do
+    it 'can return the percentage correct' do
+      @round.take_turn('Juneau')
+      @round.take_turn('Venus')
+
+      expect(@round.percent_correct).to eq(50.0)
+    end
+  end
+
+  describe '#percent_correct_by_category' do
+    it 'can return percentage of correct within a category' do
+      @round.take_turn('Juneau')
+      @round.take_turn('Venus')
+
+      expect(@round.percent_correct_by_category(:Geography)).to eq(100.0)
     end
   end
 end

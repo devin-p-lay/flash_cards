@@ -14,4 +14,8 @@ class Turn
   def feedback
     guess == card.answer ? 'Correct!' : 'Incorrect.'
   end
+
+  # def new_turn
+  #   require "pry"; binding.pry
+  # end
 end

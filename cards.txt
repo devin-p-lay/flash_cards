@@ -1,0 +1,10 @@
+What do you use to iterate over a collection?, enumerable, iteration
+true/false- @instance_variables have a GLOBAL SCOPE?, true, scope
+What data type contains a list of elements?, array, collections
+What enumerable do you use to find the sum a collection?, .sum, iteration
+true/false - local_variables have a GLOBAL SCOPE?, false, scope
+What is it called when you have an array inside of an array?, nested collection, collections
+If you can't remember a certain enumerable, what will always work?, .each, iteration
+true/false - Methods have a global scope to to the Class in which they exist?, true, scope
+What built-in Ruby method allows you to turn a nested collection back into an array, flatten, collections
+What does 'TDD' stand for?, test driven development, convention
