@@ -8,14 +8,15 @@ class Turn
   end
 
   def correct?
-    guess == card.answer
+    true if @guess.downcase.include?(@card.answer.downcase)
   end
 
   def feedback
-    guess == card.answer ? 'Correct!' : 'Incorrect.'
-  end
+    if correct?
 
-  # def new_turn
-  #   require "pry"; binding.pry
-  # end
+      '*** Correct! ***'
+    else
+      '*** Incorrect ***'
+    end
+  end
 end

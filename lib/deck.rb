@@ -12,9 +12,7 @@ class Deck
   def cards_in_category(category)
     same = []
     cards.map do |card|
-      if card.category == category
-        same << card
-      end
+      same << card if card.category == category
     end
     same
   end
